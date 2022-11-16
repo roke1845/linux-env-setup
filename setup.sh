@@ -9,6 +9,19 @@ setup_dockerfile_syntax () {
   make install
 }
 
+setup_ncdu () {
+  check=$(which ncdu)
+  if [ $? -eq 1 ]; then  
+    cp ncdu/ncdu /bin/ncdu
+  else 
+    output_message "ncdu exists"
+  fi
+} 
 
 output_message "Setup Dockerfile Syntax"
 setup_dockerfile_syntax
+output_message "Dockerfile Syntax setuped"
+
+output_message "Setup ncdu"
+setup_ncdu
+output_message "ncdu setuped"
